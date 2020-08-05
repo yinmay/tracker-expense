@@ -17,7 +17,7 @@ const useResetFormOnCloseModal = ({ form, visible }) => {
 
 const ExpenseForm = (props) => {
   const { handleOk = () => {}, visible } = props;
-  const { type, record, index, data = [], item } = props;
+  const { type, record, index, data = [] } = props;
 
   const [form] = Form.useForm();
   form.setFieldsValue({
@@ -111,6 +111,5 @@ const ExpenseForm = (props) => {
 export default connect((state) => {
   return {
     data: state.global.data,
-    item: state.global.item,
   };
 })(ExpenseForm);

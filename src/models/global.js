@@ -4,7 +4,6 @@ export default {
   state: {
     totalPlusTaxes: 0,
     total: 0,
-    item: {},
     data: [
       {
         id: 0,
@@ -33,12 +32,7 @@ export default {
         data: _.pull(state.data, action.item),
       };
     },
-    record(state, action) {
-      return {
-        ...state,
-        item: action.item,
-      };
-    },
+
     edit(state, action) {
       const { index, item } = action;
       const data = [
