@@ -11,7 +11,6 @@ const TrackerTable = (props) => {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      render: (text) => <a>{text}</a>,
     },
     {
       title: "Amount",
@@ -27,14 +26,15 @@ const TrackerTable = (props) => {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (text) => <a>{moment(text).format("YYYY-MM-DD HH:mm:ss")}</a>,
+      render: (text) => (
+        <span>{moment(text).format("YYYY-MM-DD HH:mm:ss")}</span>
+      ),
     },
 
     {
       title: "",
       key: "action",
       render: (text, record, key) => {
-        console.log(6666, "key", key, "record", record, "text", text);
         return (
           <span>
             <a onClick={() => props.changeType("edit", record, key)}>Edit </a>
