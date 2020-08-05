@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { connect } from "dva";
 import { Modal, Button } from "antd";
 import ExpenseForm from "./ExpenseForm";
+import styles from "./ExpenseForm.css";
+
 import TrackerTable from "./TrackerTable";
 
 const TrackerExpense = (props) => {
@@ -29,17 +31,23 @@ const TrackerExpense = (props) => {
   }, []);
   return (
     <div>
-      <h1>Tracker Expense</h1>
-      <p>the sub-total of the expense is {total}$</p>
-      <p>the total with taxes is {totalPlusTaxes}$</p>
-      <Button
-        onClick={() => {
-          setVisible(true);
-          changeType("add");
-        }}
-      >
-        add new expense
-      </Button>
+      <div className={styles.topWrapper}>
+        <div>
+          <h1>Tracker Expense</h1>
+          <p>the sub-total of the expense is {total}$</p>
+          <p>the total with taxes is {totalPlusTaxes}$</p>
+        </div>
+
+        <Button
+          type="primary"
+          onClick={() => {
+            setVisible(true);
+            changeType("add");
+          }}
+        >
+          add new expense
+        </Button>
+      </div>
       <Modal
         title="Basic Modal"
         visible={visible}

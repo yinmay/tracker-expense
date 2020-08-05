@@ -3,7 +3,7 @@ import moment from "moment";
 
 import { connect } from "dva";
 
-import { Table, Tag, Space, Divider } from "antd";
+import { Table, Popconfirm, Divider } from "antd";
 
 const TrackerTable = (props) => {
   const columns = [
@@ -39,8 +39,9 @@ const TrackerTable = (props) => {
           <span>
             <a onClick={() => props.changeType("edit", record, key)}>Edit </a>
             <Divider type="vertical" />
-            <a
-              onClick={() =>
+            <Popconfirm
+              title="Are you sure delete this expense?"
+              onConfirm={() =>
                 props.dispatch({
                   type: "global/delData",
                   payload: {
@@ -48,9 +49,12 @@ const TrackerTable = (props) => {
                   },
                 })
               }
+              onCancel={() => {}}
+              okText="Yes"
+              cancelText="No"
             >
-              Delete
-            </a>
+              <a href="#">Delete</a>
+            </Popconfirm>
           </span>
         );
       },
