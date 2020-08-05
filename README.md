@@ -2,9 +2,32 @@
 
 a single page webapp created by dva-cli, react-hooks and antd4
 
+## project structor
+
+```
+src
+ components
+ models
+ routes
+ services
+ utils
+index.css
+index.js
+router.js
+.editorconfig
+.eslintrc
+.webpackrc
+```
+
+### Install
+
+git clone `https://github.com/yinmay/tracker-expense.git`
+yarn or npm i
+`npm start`
+
 ## From Scratch
 
-A sequence of steps that I did to create this Todo app.
+A sequence of steps that I did to create this app.
 
 ### Install dva-cli
 
@@ -51,7 +74,7 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
 
 1. Create a model file `src/models/example.js`
 
-### import TrackerExpense componet in the Indexpage
+### import TrackerExpense components in the Indexpage
 
 ### Create the other components
 
