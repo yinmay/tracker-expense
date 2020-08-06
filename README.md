@@ -5,12 +5,13 @@ a single page webapp created by dva-cli, react-hooks and antd4
 ## project structor
 
 ```
-src
- components
- models
- routes
- services
- utils
+src frontend
+   components
+   models
+   routes
+   services
+   utils
+server backend
 index.css
 index.js
 router.js
@@ -78,8 +79,43 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
 
 ### Create the other components
 
-1. Create an folder called components `src/components`
+1. Create a folder called components `src/components`
 2. Put all the related components in it.
+
+### create server
+
+1. Create a file in the folder server `server/server.js`
+2. `npm i --save express`and `npm i -g nodemon` for hotload
+
+```
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => {
+  res.send("<h1>Hello, Mei</h1>");
+});
+app.get("/data", (req, res) => {
+  res.json({ name: "Mei" });
+});
+
+app.listen(9093, () => {
+  console.log("node start at port 9093");
+});
+
+```
+
+### connect mongoDB, mongoose and do the configuration
+
+install mongoDB from the website of the mongoDB
+`npm i --save mongoose`
+1 `mongod --config /usr/local/etc/mongod.conf`
+body-parser
+
+```
+const mongoose = require("mongoose");
+
+const DB_URL = "mongodb://localhost:27017";
+mongoose.connect(DB_URL);
+```
 
 <!-- ### Wire up DVA
    1. Set namespace to `global`
@@ -87,7 +123,8 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
    1. Add a reducer
    1. Add effects. Each "effect" is later triggered by `dispatch` as `type: "[namespace]/[effect name]"`, with `payload`
    1. Once an effect is completed, use `yield put` to trigger a reducer
-1. In `src/pages/todo/index.tsx`
+3. In `src/pages/todo/index.tsx`
+
    1. Declare an Props interface to access `dispatch`, `loading`, and data from `dva`
       ```
       interface ViewProps extends TodoState {
@@ -96,6 +133,7 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
       }
       ```
    1. Use decoration to connect `dva` to component.
+
       ```
       @connect(({ todos, loading }) => ({
         todos,

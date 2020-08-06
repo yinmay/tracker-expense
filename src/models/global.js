@@ -1,4 +1,6 @@
 import _ from "lodash";
+import { getExpenses } from "../services";
+
 export default {
   namespace: "global",
   state: {
@@ -66,8 +68,10 @@ export default {
     },
   },
   effects: {
-    *getInitial(action, { put }) {
-      yield put({ type: "getSum" });
+    *getInitial(action, { put, call }) {
+      // yield put({ type: "getSum" });
+      const data = yield call(getExpenses);
+      console.log(data);
     },
     *addData({ payload }, { put }) {
       const item = payload.item;
@@ -85,10 +89,10 @@ export default {
       yield put({ type: "edit", item, index });
       yield put({ type: "getSum" });
     },
-    *getRecord({ payload }, { put }) {
-      const item = payload.item;
-      yield put({ type: "record", item });
-    },
+    // *getRecord({ payload }, { put }) {
+    //   const item = payload.item;
+    //   yield put({ type: "record", item });
+    // },
   },
   subscriptions: {
     // setup({ dispatch, history }) {
