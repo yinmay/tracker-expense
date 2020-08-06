@@ -62,7 +62,7 @@ const ExpenseForm = (props) => {
   return (
     <Modal
       visible={visible}
-      okText="Create"
+      okText="Save"
       //   cancelText="Cancel"
       onCancel={handleOk}
       onOk={() => {
