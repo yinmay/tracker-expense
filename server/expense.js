@@ -5,6 +5,7 @@ const model = require("./models");
 const Expense = model.getModel("expense");
 
 Router.get("/list", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   Expense.find({}, (err, doc) => {
     console.log(doc);
     return res.json(doc);
