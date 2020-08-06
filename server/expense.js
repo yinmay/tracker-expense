@@ -6,7 +6,7 @@ const Expense = model.getModel("expense");
 
 Router.get("/list", (req, res) => {
   Expense.find({}, (err, doc) => {
-    console.log(123, doc);
+    console.log(doc);
     return res.json(doc);
   });
 });

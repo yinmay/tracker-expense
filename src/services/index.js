@@ -1,9 +1,28 @@
 import request from "../utils/request";
 
-// export function query() {
-//   return request('/api/users');
-// }
-
 export function getExpenses() {
-  return request.get("/express/list");
+  return request("/express/list");
 }
+
+// export function getExpenses() {
+//   debugger;
+//   // return fetch("/express/list");
+//   const options = {
+//     method: "get",
+//     // body: JSON.stringify({}),
+//     // credentials: 'include',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Access-Control-Allow-Origin": "*",
+//     },
+//   };
+//   fetch("/express/list", options)
+//     .then((response) => {
+//       response.json();
+//       debugger;
+//     })
+//     .then((res) => {
+//       debugger;
+//       console.log(666, res);
+//     });
+// }

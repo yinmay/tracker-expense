@@ -70,6 +70,7 @@ export default {
   effects: {
     *getInitial(action, { put, call }) {
       // yield put({ type: "getSum" });
+      debugger;
       const data = yield call(getExpenses);
       console.log(data);
     },
