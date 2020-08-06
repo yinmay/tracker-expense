@@ -9,8 +9,6 @@ src
  components
  models
  routes
- services
- utils
 index.css
 index.js
 router.js
@@ -44,11 +42,7 @@ A sequence of steps that I did to create this app.
 
 ### add the UI library of antd4
 
-1.
-
-```
-npm i --save react@1latest
-```
+1.`npm i --save react@1latest`
 
 2. create a new file called `.webpackrc` and wite the following code:
 
@@ -56,7 +50,7 @@ npm i --save react@1latest
 {
     "extraBabelPlugins": [
  	["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-]
+   ]
 }
 ```
 
@@ -70,9 +64,9 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
    import { Layout, Menu, Breadcrumb } from 'antd';
    ```
 
-### Create a Model
+### Create a Model for Redux
 
-1. Create a model file `src/models/example.js`
+1. Create a model file `src/models/global.js`
 
 ### import TrackerExpense components in the Indexpage
 
@@ -80,26 +74,3 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
 
 1. Create an folder called components `src/components`
 2. Put all the related components in it.
-
-<!-- ### Wire up DVA
-   1. Set namespace to `global`
-   1. Initialize state as a type of `TodoState`
-   1. Add a reducer
-   1. Add effects. Each "effect" is later triggered by `dispatch` as `type: "[namespace]/[effect name]"`, with `payload`
-   1. Once an effect is completed, use `yield put` to trigger a reducer
-1. In `src/pages/todo/index.tsx`
-   1. Declare an Props interface to access `dispatch`, `loading`, and data from `dva`
-      ```
-      interface ViewProps extends TodoState {
-        dispatch: any;
-        loading: boolean;
-      }
-      ```
-   1. Use decoration to connect `dva` to component.
-      ```
-      @connect(({ todos, loading }) => ({
-        todos,
-        loading: loading.models.todos,
-      })) -->
-
-      ```
