@@ -56,11 +56,7 @@ A sequence of steps that I did to create this app.
 
 ### add the UI library of antd4
 
-1.
-
-```
-npm i --save react@1latest
-```
+1.`npm i --save react@1latest`
 
 2. create a new file called `.webpackrc` and wite the following code:
 
@@ -68,7 +64,7 @@ npm i --save react@1latest
 {
     "extraBabelPlugins": [
  	["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-]
+   ]
 }
 ```
 
@@ -82,9 +78,9 @@ Import antd's CSS: `@import '~antd/dist/antd.css';`
    import { Layout, Menu, Breadcrumb } from 'antd';
    ```
 
-### Create a Model
+### Create a Model for Redux
 
-1. Create a model file `src/models/example.js`
+1. Create a model file `src/models/global.js`
 
 ### import TrackerExpense components in the Indexpage
 
