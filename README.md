@@ -103,6 +103,12 @@ app.listen(9093, () => {
 
 ```
 
+- start mongo `mongo`
+
+* start the server `nodemon server/server.js`
+
+* npm start
+
 ### connect mongoDB, mongoose and do the configuration
 
 install mongoDB from the website of the mongoDB
@@ -116,28 +122,3 @@ const mongoose = require("mongoose");
 const DB_URL = "mongodb://localhost:27017";
 mongoose.connect(DB_URL);
 ```
-
-<!-- ### Wire up DVA
-   1. Set namespace to `global`
-   1. Initialize state as a type of `TodoState`
-   1. Add a reducer
-   1. Add effects. Each "effect" is later triggered by `dispatch` as `type: "[namespace]/[effect name]"`, with `payload`
-   1. Once an effect is completed, use `yield put` to trigger a reducer
-3. In `src/pages/todo/index.tsx`
-
-   1. Declare an Props interface to access `dispatch`, `loading`, and data from `dva`
-      ```
-      interface ViewProps extends TodoState {
-        dispatch: any;
-        loading: boolean;
-      }
-      ```
-   1. Use decoration to connect `dva` to component.
-
-      ```
-      @connect(({ todos, loading }) => ({
-        todos,
-        loading: loading.models.todos,
-      })) -->
-
-      ```

@@ -1,25 +1,17 @@
 import _ from "lodash";
-import { getExpenses } from "../services";
+import {
+  getExpenses,
+  addExpense,
+  delExpense,
+  updateExpense,
+} from "../services";
 
 export default {
   namespace: "global",
   state: {
     totalPlusTaxes: 0,
     total: 0,
-    data: [
-      {
-        id: 0,
-        description: "pencil",
-        amount: 1,
-        date: 123,
-      },
-      {
-        id: 1,
-        description: "pen",
-        amount: 2,
-        date: 123,
-      },
-    ],
+    data: [],
   },
   reducers: {
     add(state, action) {
@@ -48,9 +40,15 @@ export default {
       };
     },
 
-    getSum(state) {
-      const total = state.data.reduce((prev, next) => prev + next.amount, 0);
-      const dataFilter = state.data.map((i) => ({
+    getSum(state, action) {
+      let data;
+      if (_.get(action.data, "length") === 0) {
+        data = state.data;
+      } else {
+        data = action.data;
+      }
+      const total = data.reduce((prev, next) => prev + next.amount, 0);
+      const dataFilter = data.map((i) => ({
         ...i,
         taxes: _.get(i, "amount") * 0.15,
       }));
@@ -69,26 +67,27 @@ export default {
   },
   effects: {
     *getInitial(action, { put, call }) {
-      // yield put({ type: "getSum" });
+      const { data } = yield call(getExpenses);
+      yield put({ type: "getSum", data });
+    },
+    *addData({ payload }, { put, call }) {
+      const item = payload.item;
+      yield call(addExpense.bind(this, item));
+      const { data } = yield call(getExpenses);
+      yield put({ type: "getSum", data });
+    },
+    *delData({ payload }, { put, call }) {
+      const item = payload.item;
+      yield call(delExpense.bind(this, item));
+      const { data } = yield call(getExpenses);
+      yield put({ type: "getSum", data });
+    },
+    *editData({ payload }, { put, call }) {
+      const item = payload.item;
+      yield call(updateExpense.bind(this, item));
+      const { data } = yield call(getExpenses);
       debugger;
-      const data = yield call(getExpenses);
-      console.log(data);
-    },
-    *addData({ payload }, { put }) {
-      const item = payload.item;
-      yield put({ type: "add", item });
-      yield put({ type: "getSum" });
-    },
-    *delData({ payload }, { put }) {
-      const item = payload.item;
-      yield put({ type: "del", item });
-      yield put({ type: "getSum" });
-    },
-    *editData({ payload }, { put }) {
-      const item = payload.item;
-      const index = payload.index;
-      yield put({ type: "edit", item, index });
-      yield put({ type: "getSum" });
+      yield put({ type: "getSum", data });
     },
     // *getRecord({ payload }, { put }) {
     //   const item = payload.item;
