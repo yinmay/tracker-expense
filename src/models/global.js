@@ -88,10 +88,6 @@ export default {
       const { data } = yield call(getExpenses);
       yield put({ type: "getSum", data });
     },
-    // *getRecord({ payload }, { put }) {
-    //   const item = payload.item;
-    //   yield put({ type: "record", item });
-    // },
   },
   subscriptions: {
     // setup({ dispatch, history }) {
