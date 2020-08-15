@@ -6,8 +6,8 @@ const Expense = model.getModel("expense");
 
 Router.get("/list", (req, res) => {
   Expense.find({}, (err, doc) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Content-type", "application/json");
+    // res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Content-type", "application/json");
     return res.json(doc);
   });
 });

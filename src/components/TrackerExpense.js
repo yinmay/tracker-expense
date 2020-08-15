@@ -17,14 +17,14 @@ const TrackerExpense = (props) => {
     setVisible(true);
     setRecord(record);
     setIndex(index);
-    props.dispatch({
-      type: "global/getRecord",
-      payload: {
-        item: {
-          ...record,
-        },
-      },
-    });
+    // props.dispatch({
+    //   type: "global/getRecord",
+    //   payload: {
+    //     item: {
+    //       ...record,
+    //     },
+    //   },
+    // });
   };
   useEffect(() => {
     props.dispatch({ type: "global/getInitial" });

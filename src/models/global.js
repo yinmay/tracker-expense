@@ -86,7 +86,6 @@ export default {
       const item = payload.item;
       yield call(updateExpense.bind(this, item));
       const { data } = yield call(getExpenses);
-      debugger;
       yield put({ type: "getSum", data });
     },
     // *getRecord({ payload }, { put }) {
