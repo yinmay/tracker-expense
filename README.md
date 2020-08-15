@@ -26,6 +26,17 @@ git clone `https://github.com/yinmay/tracker-expense.git`
 yarn or npm i
 `npm start`
 
+### for mongoDB
+
+`git clone -b feature-mangoDB https://github.com/yinmay/tracker-expense.git`
+`yarn or npm i`
+
+open three windows of terminal
+
+- `mongo`
+- `nodemon server/server`
+- `npm start`
+
 ## From Scratch
 
 A sequence of steps that I did to create this app.
